@@ -1,43 +1,34 @@
-from copy import copy
 
 
-def total(values: list, new_value: int) -> int:
-    """This function adds new_value to the values list,
-    totals the contents and returns the total
+def full_name_and_print(fname:str , mname: str, lname: str) -> None:
+    """Concatenates the names together and prints them
     
     Arguments:
-        values {list} -- list of values to total
-        new_value {int} -- value to include in total
-    
-    Returns:
-        int -- total of values in list
+        fname {str} -- first name
+        mname {str} -- middle name
+        lname {str} -- last name
     """
-    values.append(new_value)
-    return sum(values)
+    full_name = " ".join([fname, mname, lname])
+    full_name = " ".join(full_name.split())
+    print(full_name)
 
 
-def better_total(values: list, new_value: int) -> int:
-    """This function adds new_value to the values list,
-    totals the contents and returns the total
+def full_name(fname:str , mname: str, lname: str) -> str:
+    """Concatenates the names together and returns the full name
     
     Arguments:
-        values {list} -- list of values to total
-        new_value {int} -- value to include in total
+        fname {str} -- first name
+        mname {str} -- middle name
+        lname {str} -- last name
     
     Returns:
-        int -- total of values in list
+        str -- the full name with only a single space between names
     """
-    temp_list = copy(values)
-    temp_list.append(new_value)
-    return sum(temp_list)
+    full_name = " ".join([fname, mname, lname])
+    return " ".join(full_name.split())
 
 
-values_1 = [1, 2, 3]
-total_1 = total(values_1, 4)
-print(f"values_1 has been modified: {values_1}")
-print(f"total_2 is as expected: {total_1}")
-print()
-values_2 = [1, 2, 3]
-total_2 = better_total(values_2, 4)
-print(f"values_2 unchanged: {values_2}")
-print(f"total_2 is as expected: {total_2}")
+full_name_and_print("John", "", "Smith")
+
+the_full_name = full_name("John", "", "Smith")
+print(the_full_name)
