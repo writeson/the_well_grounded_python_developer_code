@@ -11,10 +11,12 @@ setup(
     install_requires=[
         "Flask==1.1.1",
         "SQLAlchemy==1.3.13", 
+        "SQLAlchemy-Utils==0.36.1",
         "Flask-SQLAlchemy==2.4.1",
         "marshmallow==3.3.0",
         "marshmallow-sqlalchemy==0.21.0",
         "connexion==2.5.1",
         "python-dateutil==2.8.1",
+        "python-dotenv==0.10.5"
     ],
 )
