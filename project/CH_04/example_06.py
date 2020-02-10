@@ -1,5 +1,5 @@
 """
-This modle contains the example_05 class api
+This modle contains the example_06 class api
 construction
 """
 
@@ -17,22 +17,13 @@ class Screen:
     max_y: int = 1024
 
 
-class Rectangle:
-    """This class defines a simple rectangle object
+class Shape:
+    """This class provides the functionality common to all
+    shapes
     """
-    def __init__(
-        self,
-        x: int,
-        y: int,
-        width: int,
-        height: int,
-        pen_color: str = "BLACK",
-        fill_color: str = "BLUE",
-    ):
+    def __init__(self, x: int, y:int, pen_color: str = "BLACK", fill_color: str = "BLUE"):
         self._x = x
         self._y = y
-        self._width = width
-        self._height = height
         self.pen_color = pen_color
         self.fill_color = fill_color
 
@@ -71,6 +62,24 @@ class Rectangle:
             self._y = Screen.max_y - self._height
         else:
             self._y = value
+    
+
+
+class Rectangle(Shape):
+    """This class defines a simple rectangle object
+    """
+    def __init__(
+        self,
+        x: int,
+        y: int,
+        width: int,
+        height: int,
+        pen_color: str = "BLACK",
+        fill_color: str = "BLUE",
+    ):
+        super().__init__(x, y, pen_color, fill_color)
+        self._width = width
+        self._height = height
 
     @property
     def width(self):
