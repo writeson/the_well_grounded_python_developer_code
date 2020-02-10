@@ -13,7 +13,6 @@ from dataclasses import dataclass
 class Screen:
     """This assumes the screen origin is 0, 0
     """
-
     max_x: int = 1024
     max_y: int = 1024
 
@@ -21,7 +20,6 @@ class Screen:
 class Rectangle:
     """This class defines a simple rectangle object
     """
-
     def __init__(
         self,
         x: int,
@@ -54,7 +52,7 @@ class Rectangle:
         elif self._x + self._width + value > Screen.max_x:
             self._x = Screen.max_x - self._width
         else:
-            self._x += value
+            self._x = value
 
     @property
     def y(self):
@@ -67,7 +65,7 @@ class Rectangle:
         elif self._y + self._height + value > Screen.max_y:
             self._y = Screen.max_y - self._height
         else:
-            self._y += value
+            self._y = value
 
     @property
     def width(self):
