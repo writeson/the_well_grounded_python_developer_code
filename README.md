@@ -1,3 +1,31 @@
-# The Well Grounded Python Developer Code
+# The Well-Grounded Python Developer Code
 
-The code examples repository to accompany the book
+## Introduction
+
+This repository contains the example code that accompanies the book. The code is organized under a project root file. Each chapter has it's own directory, and all of the examples for that chapter (if it has any) have one of two styles:
+
+* Python file name example_XX.py if the entire example is in a single file
+* example_XX as a directory name if the example code consists of multiple files
+
+## Installation
+
+Because this is a repository of Python code, you need to have Python installed on your computer. Preferably this would use the pyenv tool. This tool allows you to install multiple versions of Python if you'd like, but more importantly it doesn't interfere with the system installed version if it exists. 
+
+On a Mac the easiest way to install pyenv is to use Homebrew. This is what's recommended at this link, which describes how to install it for all environments. Here is the link to get [pyenv](https://github.com/pyenv/pyenv)
+
+After getting pyenv installed, run this command: ```pyenv install 3.8.0```
+
+Follow these steps to install and setup the repository:
+
+1. Create a directory where you want this repository
+2. cd into that directory
+3. Run this git command: ```git clone https://github.com/writeson/the_well_grounded_python_developer_code.git```
+4. Run this pyenv command: ```pyenv local 3.8.0```
+5. Run this Python command: ```python -m venv .venv```
+6. Run this command:
+   1. For Windows: ```.venv\Scripts\activate```
+   2. For Mac: ```source .venv/bin/activate```
+7. Run this Python command: ```python -m pip install --upgrade pip```
+8. Run this command: ```python -m pip install -e .```
+
+You should now be ready to move into any chapter and run the example programs.
