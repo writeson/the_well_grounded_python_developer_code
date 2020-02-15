@@ -13,6 +13,7 @@ from dataclasses import dataclass
 class Screen:
     """This assumes the screen origin is 0, 0
     """
+
     max_x: int = 1024
     max_y: int = 1024
 
@@ -20,6 +21,7 @@ class Screen:
 class Rectangle:
     """This class defines a simple rectangle object
     """
+
     def __init__(
         self,
         x: int,
@@ -49,8 +51,8 @@ class Rectangle:
         """
         if self._x + value < 0:
             self._x = 0
-        elif self._x + self._width + value > Screen.max_x:
-            self._x = Screen.max_x - self._width
+        elif self._x + value > Screen.max_x:
+            self._x = Screen.max_x
         else:
             self._x = value
 
@@ -67,8 +69,8 @@ class Rectangle:
         """
         if self._y + value < 0:
             self._y = 0
-        elif self._y + self._height + value > Screen.max_y:
-            self._y = Screen.max_y - self._height
+        elif self._y + value > Screen.max_y:
+            self._y = Screen.max_y
         else:
             self._y = value
 
@@ -80,13 +82,13 @@ class Rectangle:
     def height(self):
         return self._height
 
-    def volume(self) -> int:
-        """Calculate and return the volume of the rectangle
+    def area(self) -> int:
+        """Calculate and return the area of the rectangle
         
         Returns:
             int -- the width * height volume
         """
-        return self.width * self.height
+        return self._width * self._height
 
     def set_pen_color(self, color: str) -> Rectangle:
         """Set the pen color of the rectangle
@@ -114,11 +116,11 @@ class Rectangle:
 
 
 rectangle = Rectangle(10, 10, 10, 20)
-print(rectangle.volume())
+print(f"The rectangle area = {rectangle.area()}")
 
 rectangle.x += 15
 rectangle.y += 15
 rectangle.set_pen_color("BLUE").set_fill_color("GREEN")
 print(
-    f"{rectangle.pen_color} rectangle filed with {rectangle.fill_color} after move, x={rectangle.x}, y={rectangle.y}"
+    f"{rectangle.pen_color} rectangle filed with {rectangle.fill_color}, position x={rectangle.x}, y={rectangle.y}"
 )
