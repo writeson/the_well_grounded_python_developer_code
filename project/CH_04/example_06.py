@@ -67,7 +67,7 @@ class Shape:
         else:
             self._y = value
 
-    def set_pen_color(self, color: str) -> Rectangle:
+    def set_pen_color(self, color: str) -> Shape:
         """Set the pen color of the rectangle
         
         Arguments:
@@ -79,7 +79,7 @@ class Shape:
         self.pen_color = color
         return self
 
-    def set_fill_color(self, color: str) -> Rectangle:
+    def set_fill_color(self, color: str) -> Shape:
         """Set the fill color of the rectangle
         
         Arguments:
