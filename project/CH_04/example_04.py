@@ -18,11 +18,11 @@ class Rectangle:
         self.height = height
         self.pen_color = pen_color
 
-    def volume(self) -> int:
-        """Calculate and return the volume of the rectangle
+    def area(self) -> int:
+        """Calculate and return the area of the rectangle
         
         Returns:
-            int -- the width * height volume
+            int -- the width * height area
         """
         return self.width * self.height
 
@@ -52,7 +52,7 @@ class Rectangle:
 
 
 rectangle = Rectangle(10, 10, 10, 20)
-print(rectangle.volume())
+print(rectangle.area())
 
 rectangle.x += 15
 rectangle.y += 15
