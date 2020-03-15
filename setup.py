@@ -17,6 +17,7 @@ setup(
         "marshmallow-sqlalchemy==0.21.0",
         "connexion==2.5.1",
         "python-dateutil==2.8.1",
-        "python-dotenv==0.10.5"
+        "python-dotenv==0.10.5",
+        "arcade==2.3.8"
     ],
 )

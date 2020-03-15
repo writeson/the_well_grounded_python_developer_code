@@ -35,4 +35,3 @@ while not successful:
             print("Thanks for running the program")
         else:
             print("Try entering a dividend and divisor again")
-
