@@ -1,5 +1,5 @@
 """
-This modle contains the example_06 class api
+This modle contains the example_07 class api
 construction
 """
 
@@ -18,6 +18,30 @@ class Screen:
     max_y: int = 1024
 
 
+class Color:
+    COLORS = ["RED", "GREEN", "BLUE", "YELLOW", "ORANGE", "WHITE", "BLACK"]
+
+    def __init__(self, color: str):
+        if color in Color.COLORS:
+            self._color = color
+        else:
+            self._color_error(color)
+
+    @property
+    def color(self):
+        return self._color
+
+    @color.setter
+    def color(self, value):
+        if value in Color.COLORS:
+            self._color = Color
+        else:
+            self._color_error(color)
+
+    def _color_error(self, color):
+        raise AttributeError("Invalid color", color)
+
+
 class Shape:
     """This class provides the functionality common to all
     shapes
@@ -28,8 +52,8 @@ class Shape:
     ):
         self._x = x
         self._y = y
-        self.pen_color = pen_color
-        self.fill_color = fill_color
+        self.pen = Color(pen_color)
+        self.fill = Color(fill_color)
 
     @property
     def x(self):
@@ -67,7 +91,7 @@ class Shape:
         else:
             self._y = value
 
-    def set_pen_color(self, color: str) -> Shape:
+    def set_pen_color(self, color: Color) -> Shape:
         """Set the pen color of the rectangle
         
         Arguments:
@@ -76,10 +100,10 @@ class Shape:
         Returns:
             Rectangle -- returns self for chaining
         """
-        self.pen_color = color
+        self.pen = color
         return self
 
-    def set_fill_color(self, color: str) -> Shape:
+    def set_fill_color(self, color: Color) -> Shape:
         """Set the fill color of the rectangle
         
         Arguments:
@@ -88,7 +112,7 @@ class Shape:
         Returns:
             Rectangle -- returns self for chaining
         """
-        self.fill_color = color
+        self.fill = color
         return self
 
 
@@ -156,7 +180,7 @@ for shape in shapes:
         f"shape is a {type(shape).__name__}, and is an instance of Shape: {isinstance(shape, Shape)}"
     )
     print(
-        f"{type(shape).__name__} pen color: {shape.pen_color} and filled with {shape.fill_color}"
+        f"{type(shape).__name__} pen color: {shape.pen.color} and filled with {shape.fill.color}"
     )
     print(f"{type(shape).__name__} area = {shape.area()}")
 
