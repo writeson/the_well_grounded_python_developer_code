@@ -1,7 +1,7 @@
 from typing import Tuple
 
 
-def my_function(full_name: str) -> Tuple[str, str, str]:
+def split_fullname(full_name: str) -> Tuple[str, str, str]:
     """This function splits the full name passed in
     and returns the parts in a tuple as the fname, 
     mname and lname as best it can
@@ -26,9 +26,9 @@ def my_function(full_name: str) -> Tuple[str, str, str]:
     return (fname, mname, lname)
 
 
-fname, mname, lname = my_function("John")
+fname, mname, lname = split_fullname("John")
 print(fname, mname, lname)
-fname, mname, lname = my_function("John Smith")
+fname, mname, lname = split_fullname("John Smith")
 print(fname, mname, lname)
-fname, mname, lname = my_function("John James Smith")
+fname, mname, lname = split_fullname("John James Smith")
 print(fname, mname, lname)
