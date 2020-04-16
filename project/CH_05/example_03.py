@@ -1,8 +1,9 @@
 # Boilerplate display window functionality
 
 from __future__ import annotations
-import arcade
+
 from random import choice
+import arcade
 
 # Constants
 SCREEN_WIDTH = 600
@@ -40,8 +41,8 @@ class Rectangle:
         vel_x: int = 1,
         vel_y: int = 1,
     ):
-        self.x = x
-        self.y = y
+        self._x = x
+        self._y = y
         self.width = width
         self.height = height
         self.pen_color = pen_color
@@ -50,6 +51,36 @@ class Rectangle:
         self.dir_y = 1 if dir_y > 0 else -1
         self.vel_x = vel_x
         self.vel_y = vel_y
+
+    @property
+    def x(self):
+        return self._x
+
+    @x.setter
+    def x(self, value: int):
+        """Limit the self._x to within the screen dimensions
+        
+        Arguments:
+            value {int} -- the value to set x to
+        """
+        if not (0 < value < SCREEN_WIDTH - self.width):
+            self.dir_x = -self.dir_x
+        self._x += abs(self._x - value) * self.dir_x
+
+    @property
+    def y(self):
+        return self._y
+
+    @y.setter
+    def y(self, value):
+        """Limit the self._y to within the screen dimensions
+        
+        Arguments:
+            value {int} -- the value to set y to
+        """
+        if not (0 < value < SCREEN_HEIGHT - self.height):
+            self.dir_y = -self.dir_y
+        self._y += abs(self._y - value) * self.dir_y
 
     def set_pen_color(self, color: tuple) -> Rectangle:
         """Set the pen color of the rectangle
@@ -115,11 +146,9 @@ class Display(arcade.Window):
     def on_update(self, delta_time):
         """Update the position of the rectangles in the display
         """
-        if Display.interval <= 40:
-            for rectangle in self.rectangles:
-                rectangle.x += rectangle.vel_x
-                rectangle.y += rectangle.vel_y
-        Display.interval += 1
+        for rectangle in self.rectangles:
+            rectangle.x += rectangle.vel_x
+            rectangle.y += rectangle.vel_y
 
     def on_draw(self):
         """Called whenever you need to draw your window
@@ -141,11 +170,10 @@ class Display(arcade.Window):
             interval {int} -- interval passed in from 
             the arcade schedule function
         """
-        if 0:
-            for rectangle in self.rectangles:
-                rectangle.set_pen_color(choice(COLOR_PALETTE)).set_fill_color(
-                    choice(COLOR_PALETTE)
-                )
+        for rectangle in self.rectangles:
+            rectangle.set_pen_color(choice(COLOR_PALETTE)).set_fill_color(
+                choice(COLOR_PALETTE)
+            )
 
 
 # Main code entry point
