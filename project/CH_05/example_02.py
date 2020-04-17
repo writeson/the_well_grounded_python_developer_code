@@ -1,4 +1,4 @@
-# Boilerplate display window functionality
+# Using a class to encapsulte a rectangle and how to draw and animate it
 
 from __future__ import annotations
 import arcade
@@ -115,11 +115,9 @@ class Display(arcade.Window):
     def on_update(self, delta_time):
         """Update the position of the rectangles in the display
         """
-        if Display.interval <= 40:
-            for rectangle in self.rectangles:
-                rectangle.x += rectangle.vel_x
-                rectangle.y += rectangle.vel_y
-        Display.interval += 1
+        for rectangle in self.rectangles:
+            rectangle.x += rectangle.vel_x
+            rectangle.y += rectangle.vel_y
 
     def on_draw(self):
         """Called whenever you need to draw your window
@@ -141,11 +139,10 @@ class Display(arcade.Window):
             interval {int} -- interval passed in from 
             the arcade schedule function
         """
-        if 0:
-            for rectangle in self.rectangles:
-                rectangle.set_pen_color(choice(COLOR_PALETTE)).set_fill_color(
-                    choice(COLOR_PALETTE)
-                )
+        for rectangle in self.rectangles:
+            rectangle.set_pen_color(choice(COLOR_PALETTE)).set_fill_color(
+                choice(COLOR_PALETTE)
+            )
 
 
 # Main code entry point
