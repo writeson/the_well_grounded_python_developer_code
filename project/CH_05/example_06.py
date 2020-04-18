@@ -11,6 +11,7 @@ import arcade
 SCREEN_WIDTH = 600
 SCREEN_HEIGHT = 800
 
+
 @dataclass
 class Color:
     """This class defines a color and it's methods
@@ -18,12 +19,12 @@ class Color:
 
     PALETTE = [
         arcade.color.BLACK,
+        arcade.color.LIGHT_GRAY,
         arcade.color.LIGHT_CRIMSON,
         arcade.color.LIGHT_BLUE,
         arcade.color.LIGHT_CORAL,
         arcade.color.LIGHT_CYAN,
         arcade.color.LIGHT_GREEN,
-        arcade.color.LIGHT_GRAY,
         arcade.color.LIGHT_YELLOW,
         arcade.color.LIGHT_PASTEL_PURPLE,
         arcade.color.LIGHT_SALMON,
@@ -69,8 +70,8 @@ class Shape:
         self._y = y
         self.width = width
         self.height = height
-        self.pen = pen
-        self.fill = fill
+        self.pen = Color(Color.PALETTE[0])
+        self.fill = Color(Color.PALETTE[1])
         self.dir_x = 1 if dir_x > 0 else -1
         self.dir_y = 1 if dir_y > 0 else -1
         self.vel_x = vel_x
@@ -164,16 +165,14 @@ class Square(Rectangle):
         x: int,
         y: int,
         size: int,
-        pen: Color = Color(),
-        fill: Color = Color(),
+        pen: Color = Color(Color.PALETTE[0]),
+        fill: Color = Color(Color.PALETTE[1]),
         dir_x: int = 1,
         dir_y: int = 1,
         vel_x: int = 1,
         vel_y: int = 1,
     ):
-        super().__init__(
-            x, y, size, size, pen, fill, dir_x, dir_y, vel_x, vel_y
-        )
+        super().__init__(x, y, size, size, pen, fill, dir_x, dir_y, vel_x, vel_y)
 
 
 class Circle(Shape):
@@ -188,16 +187,14 @@ class Circle(Shape):
         x: int,
         y: int,
         size: int,
-        pen: Color = Color(),
-        fill: Color = Color(),
+        pen: Color = Color(Color.PALETTE[0]),
+        fill: Color = Color(Color.PALETTE[1]),
         dir_x: int = 1,
         dir_y: int = 1,
         vel_x: int = 1,
         vel_y: int = 1,
     ):
-        super().__init__(
-            x, y, size, size, pen, fill, dir_x, dir_y, vel_x, vel_y
-        )
+        super().__init__(x, y, size, size, pen, fill, dir_x, dir_y, vel_x, vel_y)
 
     def draw(self):
         """Draw the circle based on the current state
@@ -273,12 +270,12 @@ if __name__ == "__main__":
     # Create the display instance
     display = Display("Example 01")
 
-    # Append the shapes to the display rectangles list
-    display.append(Rectangle(20, 20, 100, 200, pen=Color(Color.PALETTE[1]), fill=Color(Color.PALETTE[3])))
-    display.append(Square(400, 600, 120, pen=Color(Color.PALETTE[2]), fill=Color(Color.PALETTE[3]), dir_x=-1, dir_y=-1, vel_x=3, vel_y=2))
-    display.append(Circle(300, 400, 100, pen=Color(Color.PALETTE[4]), fill=Color(Color.PALETTE[6]), dir_x=1, dir_y=-1, vel_x=6, vel_y=4))
+    # Append the shapes to the display shapes list
+    display.append(Rectangle(20, 20, 100, 200))
+    display.append(Square(400, 600, 120, dir_x=-1, dir_y=-1, vel_x=3, vel_y=2))
+    display.append(Circle(300, 400, 100, dir_x=1, dir_y=-1, vel_x=6, vel_y=4))
 
-    # Change the shape colors on a schedule
+    # Change the shape colors on a schedule, every 1 second
     arcade.schedule(display.change_colors, 1)
 
     # Run the application

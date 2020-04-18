@@ -23,12 +23,12 @@ class Color:
 
     PALETTE = [
         arcade.color.BLACK,
+        arcade.color.LIGHT_GRAY,
         arcade.color.LIGHT_CRIMSON,
         arcade.color.LIGHT_BLUE,
         arcade.color.LIGHT_CORAL,
         arcade.color.LIGHT_CYAN,
         arcade.color.LIGHT_GREEN,
-        arcade.color.LIGHT_GRAY,
         arcade.color.LIGHT_YELLOW,
         arcade.color.LIGHT_PASTEL_PURPLE,
         arcade.color.LIGHT_SALMON,
@@ -74,8 +74,8 @@ class Shape:
         self._y = y
         self.width = width
         self.height = height
-        self.pen = pen
-        self.fill = fill
+        self.pen = Color(Color.PALETTE[0])
+        self.fill = Color(Color.PALETTE[1])
         self.dir_x = 1 if dir_x > 0 else -1
         self.dir_y = 1 if dir_y > 0 else -1
         self.vel_x = vel_x
@@ -222,7 +222,7 @@ if __name__ == "__main__":
     display = Display("Example 01")
 
     # Append the rectangles to the display rectangles list
-    display.append(Rectangle(20, 20, 100, 200, pen=Color(Color.PALETTE[0]), fill=Color(Color.PALETTE[6])))
+    display.append(Rectangle(20, 20, 100, 200))
 
     # Change the rectangle colors on a schedule
     arcade.schedule(display.change_colors, 1)

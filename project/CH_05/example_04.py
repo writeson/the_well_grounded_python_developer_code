@@ -12,12 +12,13 @@ SCREEN_WIDTH = 600
 SCREEN_HEIGHT = 800
 
 COLOR_PALETTE = [
+    arcade.color.BLACK,
+    arcade.color.LIGHT_GRAY,
     arcade.color.LIGHT_CRIMSON,
     arcade.color.LIGHT_BLUE,
     arcade.color.LIGHT_CORAL,
     arcade.color.LIGHT_CYAN,
     arcade.color.LIGHT_GREEN,
-    arcade.color.LIGHT_GRAY,
     arcade.color.LIGHT_YELLOW,
     arcade.color.LIGHT_PASTEL_PURPLE,
     arcade.color.LIGHT_SALMON,
@@ -36,8 +37,8 @@ class Shape:
         y: int,
         width: int,
         height: int,
-        pen_color: tuple = arcade.color.BLACK,
-        fill_color: tuple = (132, 132, 130),
+        pen_color: tuple = COLOR_PALETTE[0],
+        fill_color: tuple = COLOR_PALETTE[1],
         dir_x: int = 1,
         dir_y: int = 1,
         vel_x: int = 1,
