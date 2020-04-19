@@ -1,4 +1,4 @@
-# Boilerplate display window functionality
+# Using a class to encapsulte a rectangle and how to draw and animate it
 
 from __future__ import annotations
 import arcade
@@ -9,12 +9,13 @@ SCREEN_WIDTH = 600
 SCREEN_HEIGHT = 800
 
 COLOR_PALETTE = [
+    arcade.color.BLACK,
+    arcade.color.LIGHT_GRAY,
     arcade.color.LIGHT_CRIMSON,
     arcade.color.LIGHT_BLUE,
     arcade.color.LIGHT_CORAL,
     arcade.color.LIGHT_CYAN,
     arcade.color.LIGHT_GREEN,
-    arcade.color.LIGHT_GRAY,
     arcade.color.LIGHT_YELLOW,
     arcade.color.LIGHT_PASTEL_PURPLE,
     arcade.color.LIGHT_SALMON,
@@ -33,8 +34,8 @@ class Rectangle:
         y: int,
         width: int,
         height: int,
-        pen_color: tuple = arcade.color.BLACK,
-        fill_color: tuple = (132, 132, 130),
+        pen_color: tuple = COLOR_PALETTE[0],
+        fill_color: tuple = COLOR_PALETTE[1],
         dir_x: int = 1,
         dir_y: int = 1,
         vel_x: int = 1,
@@ -115,11 +116,9 @@ class Display(arcade.Window):
     def on_update(self, delta_time):
         """Update the position of the rectangles in the display
         """
-        if Display.interval <= 40:
-            for rectangle in self.rectangles:
-                rectangle.x += rectangle.vel_x
-                rectangle.y += rectangle.vel_y
-        Display.interval += 1
+        for rectangle in self.rectangles:
+            rectangle.x += rectangle.vel_x
+            rectangle.y += rectangle.vel_y
 
     def on_draw(self):
         """Called whenever you need to draw your window
@@ -141,11 +140,10 @@ class Display(arcade.Window):
             interval {int} -- interval passed in from 
             the arcade schedule function
         """
-        if 0:
-            for rectangle in self.rectangles:
-                rectangle.set_pen_color(choice(COLOR_PALETTE)).set_fill_color(
-                    choice(COLOR_PALETTE)
-                )
+        for rectangle in self.rectangles:
+            rectangle.set_pen_color(choice(COLOR_PALETTE)).set_fill_color(
+                choice(COLOR_PALETTE)
+            )
 
 
 # Main code entry point
