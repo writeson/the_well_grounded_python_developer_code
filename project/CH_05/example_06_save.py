@@ -1,4 +1,8 @@
-# Boilerplate display window functionality
+# Using a class to encapsulte a rectangle and how to draw and animate it
+# and limit the rectangle to within the screen space
+# It also makes use of Inheritance
+# and adds composition system
+
 
 from __future__ import annotations
 
@@ -133,7 +137,7 @@ class Shape:
 
     def draw(self):
         """This method will be overridden by class that inherit
-        Shape
+        from Shape
         """
         pass
 
@@ -153,62 +157,11 @@ class Rectangle(Shape):
         )
 
 
-class Square(Rectangle):
-    """This class creates a squery
-    
-    Arguments:
-        Rectangle {class} -- inherits from Rectangle
-    """
-
-    def __init__(
-        self,
-        x: int,
-        y: int,
-        size: int,
-        pen: Color = Color(Color.PALETTE[0]),
-        fill: Color = Color(Color.PALETTE[1]),
-        dir_x: int = 1,
-        dir_y: int = 1,
-        vel_x: int = 1,
-        vel_y: int = 1,
-    ):
-        super().__init__(x, y, size, size, pen, fill, dir_x, dir_y, vel_x, vel_y)
-
-
-class Circle(Shape):
-    """This class creates a circle object
-    
-    Arguments:
-        Shape {class} -- inherits from the Shape class
-    """
-
-    def __init__(
-        self,
-        x: int,
-        y: int,
-        size: int,
-        pen: Color = Color(Color.PALETTE[0]),
-        fill: Color = Color(Color.PALETTE[1]),
-        dir_x: int = 1,
-        dir_y: int = 1,
-        vel_x: int = 1,
-        vel_y: int = 1,
-    ):
-        super().__init__(x, y, size, size, pen, fill, dir_x, dir_y, vel_x, vel_y)
-
-    def draw(self):
-        """Draw the circle based on the current state
-        """
-        radius = self.width / 2
-        center_x = self.x + radius
-        center_y = self.y + radius
-        arcade.draw_circle_filled(center_x, center_y, radius, self.fill.color)
-        arcade.draw_circle_outline(center_x, center_y, radius, self.pen.color, 3)
-
-
 class Display(arcade.Window):
     """Main display window
     """
+
+    interval = 0
 
     def __init__(self, screen_title):
         """Initialize the window
@@ -222,11 +175,11 @@ class Display(arcade.Window):
         # Set the background window
         arcade.set_background_color(arcade.color.WHITE)
 
-    def append(self, shape: Shape):
+    def append(self, shape: shape):
         """Appends an instance of a shape to the list of shapes
         
         Arguments:
-            shape {Shape} -- Shape instance to add to the list
+            shape {shape} -- shape instance to add to the list
         """
         self.shapes.append(shape)
 
@@ -244,13 +197,13 @@ class Display(arcade.Window):
         # Clear the screen and start drawing
         arcade.start_render()
 
-        # Draw the rectangles
+        # Draw the shapes
         for shape in self.shapes:
             shape.draw()
 
     def change_colors(self, interval):
         """This function is called once a second to
-        change the colors of all the rectangles to
+        change the colors of all the shapes to
         a random selection from COLOR_PALETTE
         
         Arguments:
@@ -268,12 +221,10 @@ if __name__ == "__main__":
     # Create the display instance
     display = Display("Example 01")
 
-    # Append the shapes to the display shapes list
+    # Append the rectangles to the display rectangles list
     display.append(Rectangle(20, 20, 100, 200))
-    display.append(Square(400, 600, 120, dir_x=-1, dir_y=-1, vel_x=3, vel_y=2))
-    display.append(Circle(300, 400, 100, dir_x=1, dir_y=-1, vel_x=6, vel_y=4))
 
-    # Change the shape colors on a schedule, every 1 second
+    # Change the rectangle colors on a schedule
     arcade.schedule(display.change_colors, 1)
 
     # Run the application

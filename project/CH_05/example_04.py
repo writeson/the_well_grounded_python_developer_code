@@ -135,8 +135,6 @@ class Display(arcade.Window):
     """Main display window
     """
 
-    interval = 0
-
     def __init__(self, screen_title):
         """Initialize the window
         """
