@@ -154,7 +154,7 @@ class Rectangle(Shape):
 
 
 class Square(Rectangle):
-    """This class creates a squery
+    """This class creates a shape
     
     Arguments:
         Rectangle {class} -- inherits from Rectangle
