@@ -256,7 +256,7 @@ class Display(arcade.Window):
 
 
 # Main code entry point
-if __name__ == "__main__":
+def main():
     # Create the display instance
     display = Display("Example 01")
 
@@ -270,3 +270,7 @@ if __name__ == "__main__":
 
     # Run the application
     arcade.run()
+
+
+if __name__ == "__main__":
+    main()

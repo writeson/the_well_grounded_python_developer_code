@@ -41,7 +41,7 @@ class Color:
     @color.setter
     def color(self, value: tuple) -> None:
         """Sets the color in the class
-        
+
         Arguments:
             value {tuple} -- the color tuple from COLOR_PALETTE to set
         """
@@ -84,7 +84,7 @@ class Shape:
     @x.setter
     def x(self, value: int):
         """Limit the self._x to within the screen dimensions
-        
+
         Arguments:
             value {int} -- the value to set x to
         """
@@ -99,7 +99,7 @@ class Shape:
     @y.setter
     def y(self, value):
         """Limit the self._y to within the screen dimensions
-        
+
         Arguments:
             value {int} -- the value to set y to
         """
@@ -109,10 +109,10 @@ class Shape:
 
     def set_pen_color(self, color: tuple) -> Rectangle:
         """Set the pen color of the rectangle
-        
+
         Arguments:
             color {tuple} -- the color tuple to set the rectangle pen to
-        
+
         Returns:
             Rectangle -- returns self for chaining
         """
@@ -121,10 +121,10 @@ class Shape:
 
     def set_fill_color(self, color: tuple) -> Rectangle:
         """Set the fill color of the rectangle
-        
+
         Arguments:
             color {tuple} -- the color tuple to set the rectangle fill to
-        
+
         Returns:
             Rectangle -- returns self for chaining
         """
@@ -155,7 +155,7 @@ class Rectangle(Shape):
 
 class Square(Rectangle):
     """This class creates a shape
-    
+
     Arguments:
         Rectangle {class} -- inherits from Rectangle
     """
@@ -177,7 +177,7 @@ class Square(Rectangle):
 
 class Circle(Shape):
     """This class creates a circle object
-    
+
     Arguments:
         Shape {class} -- inherits from the Shape class
     """
@@ -203,7 +203,8 @@ class Circle(Shape):
         center_x = self.x + radius
         center_y = self.y + radius
         arcade.draw_circle_filled(center_x, center_y, radius, self.fill.color)
-        arcade.draw_circle_outline(center_x, center_y, radius, self.pen.color, 3)
+        arcade.draw_circle_outline(
+            center_x, center_y, radius, self.pen.color, 3)
 
 
 class Display(arcade.Window):
@@ -224,7 +225,7 @@ class Display(arcade.Window):
 
     def append(self, shape: Shape):
         """Appends an instance of a shape to the list of shapes
-        
+
         Arguments:
             shape {Shape} -- Shape instance to add to the list
         """
@@ -252,7 +253,7 @@ class Display(arcade.Window):
         """This function is called once a second to
         change the colors of all the rectangles to
         a random selection from COLOR_PALETTE
-        
+
         Arguments:
             interval {int} -- interval passed in from 
             the arcade schedule function
@@ -263,8 +264,7 @@ class Display(arcade.Window):
             )
 
 
-# Main code entry point
-if __name__ == "__main__":
+def main():
     # Create the display instance
     display = Display("Example 01")
 
@@ -278,3 +278,7 @@ if __name__ == "__main__":
 
     # Run the application
     arcade.run()
+
+
+if __name__ == "__main__":
+    main()

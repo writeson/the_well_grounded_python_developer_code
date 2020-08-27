@@ -1,56 +1,30 @@
 # Using a class to encapsulte a rectangle and how to draw and animate it
 # and limit the rectangle to within the screen space
 # It also makes use of Inheritance
-# and adds composition system
-
 
 from __future__ import annotations
 
 from random import choice
-from dataclasses import dataclass
-from dataclasses import field
 import arcade
 
 # Constants
 SCREEN_WIDTH = 600
 SCREEN_HEIGHT = 800
 
-
-@dataclass
-class Color:
-    """This class defines a color and it's methods
-    """
-
-    PALETTE = [
-        arcade.color.BLACK,
-        arcade.color.LIGHT_GRAY,
-        arcade.color.LIGHT_CRIMSON,
-        arcade.color.LIGHT_BLUE,
-        arcade.color.LIGHT_CORAL,
-        arcade.color.LIGHT_CYAN,
-        arcade.color.LIGHT_GREEN,
-        arcade.color.LIGHT_YELLOW,
-        arcade.color.LIGHT_PASTEL_PURPLE,
-        arcade.color.LIGHT_SALMON,
-        arcade.color.LIGHT_TAUPE,
-        arcade.color.LIGHT_SLATE_GRAY,
-    ]
-    color: tuple = PALETTE[0]
-    _color: tuple = field(init=False)
-
-    @property
-    def color(self) -> tuple:
-        return self._color
-
-    @color.setter
-    def color(self, value: tuple) -> None:
-        """Sets the color in the class
-        
-        Arguments:
-            value {tuple} -- the color tuple from COLOR_PALETTE to set
-        """
-        if value in Color.PALETTE:
-            self._color = value
+COLOR_PALETTE = [
+    arcade.color.BLACK,
+    arcade.color.LIGHT_GRAY,
+    arcade.color.LIGHT_CRIMSON,
+    arcade.color.LIGHT_BLUE,
+    arcade.color.LIGHT_CORAL,
+    arcade.color.LIGHT_CYAN,
+    arcade.color.LIGHT_GREEN,
+    arcade.color.LIGHT_YELLOW,
+    arcade.color.LIGHT_PASTEL_PURPLE,
+    arcade.color.LIGHT_SALMON,
+    arcade.color.LIGHT_TAUPE,
+    arcade.color.LIGHT_SLATE_GRAY,
+]
 
 
 class Shape:
@@ -63,8 +37,8 @@ class Shape:
         y: int,
         width: int,
         height: int,
-        pen: Color = Color(),
-        fill: Color = Color(),
+        pen_color: tuple = COLOR_PALETTE[0],
+        fill_color: tuple = COLOR_PALETTE[1],
         dir_x: int = 1,
         dir_y: int = 1,
         vel_x: int = 1,
@@ -74,8 +48,8 @@ class Shape:
         self._y = y
         self.width = width
         self.height = height
-        self.pen = Color(Color.PALETTE[0])
-        self.fill = Color(Color.PALETTE[1])
+        self.pen_color = pen_color
+        self.fill_color = fill_color
         self.dir_x = 1 if dir_x > 0 else -1
         self.dir_y = 1 if dir_y > 0 else -1
         self.vel_x = vel_x
@@ -88,7 +62,7 @@ class Shape:
     @x.setter
     def x(self, value: int):
         """Limit the self._x to within the screen dimensions
-        
+
         Arguments:
             value {int} -- the value to set x to
         """
@@ -103,7 +77,7 @@ class Shape:
     @y.setter
     def y(self, value):
         """Limit the self._y to within the screen dimensions
-        
+
         Arguments:
             value {int} -- the value to set y to
         """
@@ -113,26 +87,26 @@ class Shape:
 
     def set_pen_color(self, color: tuple) -> Rectangle:
         """Set the pen color of the rectangle
-        
+
         Arguments:
             color {tuple} -- the color tuple to set the rectangle pen to
-        
+
         Returns:
             Rectangle -- returns self for chaining
         """
-        self.pen.color = color
+        self.pen_color = color
         return self
 
     def set_fill_color(self, color: tuple) -> Rectangle:
         """Set the fill color of the rectangle
-        
+
         Arguments:
             color {tuple} -- the color tuple to set the rectangle fill to
-        
+
         Returns:
             Rectangle -- returns self for chaining
         """
-        self.fill.color = color
+        self.fill_color = color
         return self
 
     def draw(self):
@@ -150,18 +124,16 @@ class Rectangle(Shape):
         """Draw the rectangle based on the current state
         """
         arcade.draw_xywh_rectangle_filled(
-            self.x, self.y, self.width, self.height, self.fill.color
+            self.x, self.y, self.width, self.height, self.fill_color
         )
         arcade.draw_xywh_rectangle_outline(
-            self.x, self.y, self.width, self.height, self.pen.color, 3
+            self.x, self.y, self.width, self.height, self.pen_color, 3
         )
 
 
 class Display(arcade.Window):
     """Main display window
     """
-
-    interval = 0
 
     def __init__(self, screen_title):
         """Initialize the window
@@ -177,7 +149,7 @@ class Display(arcade.Window):
 
     def append(self, shape: shape):
         """Appends an instance of a shape to the list of shapes
-        
+
         Arguments:
             shape {shape} -- shape instance to add to the list
         """
@@ -205,19 +177,19 @@ class Display(arcade.Window):
         """This function is called once a second to
         change the colors of all the shapes to
         a random selection from COLOR_PALETTE
-        
+
         Arguments:
             interval {int} -- interval passed in from 
             the arcade schedule function
         """
         for shape in self.shapes:
-            shape.set_pen_color(choice(Color.PALETTE)).set_fill_color(
-                choice(Color.PALETTE)
+            shape.set_pen_color(choice(COLOR_PALETTE)).set_fill_color(
+                choice(COLOR_PALETTE)
             )
 
 
 # Main code entry point
-if __name__ == "__main__":
+def main():
     # Create the display instance
     display = Display("Example 01")
 
@@ -229,3 +201,7 @@ if __name__ == "__main__":
 
     # Run the application
     arcade.run()
+
+
+if __name__ == "__main__":
+    main()

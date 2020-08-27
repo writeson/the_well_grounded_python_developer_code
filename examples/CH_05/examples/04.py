@@ -61,7 +61,7 @@ class Rectangle:
     @x.setter
     def x(self, value: int):
         """Limit the self._x to within the screen dimensions
-        
+
         Arguments:
             value {int} -- the value to set x to
         """
@@ -76,7 +76,7 @@ class Rectangle:
     @y.setter
     def y(self, value):
         """Limit the self._y to within the screen dimensions
-        
+
         Arguments:
             value {int} -- the value to set y to
         """
@@ -86,10 +86,10 @@ class Rectangle:
 
     def set_pen_color(self, color: tuple) -> Rectangle:
         """Set the pen color of the rectangle
-        
+
         Arguments:
             color {tuple} -- the color tuple to set the rectangle pen to
-        
+
         Returns:
             Rectangle -- returns self for chaining
         """
@@ -98,10 +98,10 @@ class Rectangle:
 
     def set_fill_color(self, color: tuple) -> Rectangle:
         """Set the fill color of the rectangle
-        
+
         Arguments:
             color {tuple} -- the color tuple to set the rectangle fill to
-        
+
         Returns:
             Rectangle -- returns self for chaining
         """
@@ -139,7 +139,7 @@ class Display(arcade.Window):
 
     def append(self, rectangle: Rectangle):
         """Appends an instance of a rectangle to the list of rectangles
-        
+
         Arguments:
             rectangle {Rectangle} -- Rectangle instance to add to the list
         """
@@ -167,7 +167,7 @@ class Display(arcade.Window):
         """This function is called once a second to
         change the colors of all the rectangles to
         a random selection from COLOR_PALETTE
-        
+
         Arguments:
             interval {int} -- interval passed in from 
             the arcade schedule function
@@ -179,7 +179,7 @@ class Display(arcade.Window):
 
 
 # Main code entry point
-if __name__ == "__main__":
+def main():
     # Create the display instance
     display = Display("Example 01")
 
@@ -194,3 +194,7 @@ if __name__ == "__main__":
 
     # Run the application
     arcade.run()
+
+
+if __name__ == "__main__":
+    main()
