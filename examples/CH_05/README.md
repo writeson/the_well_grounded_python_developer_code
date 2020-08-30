@@ -28,10 +28,10 @@ The command will pip install any modules necessary to run the example programs i
 
 To run the example programs just enter the command line shortcut shown in the list below. The list below shows the shortcut command and a brief description of what the command does.
 
-* example_01 - demonstrates creating and using a decorator function.
-* example_02 - demonstrates creating and using a simple Person class and class instance.
-* example_03 - demonstrates the first iteration of the animated shapes program, animating a single, color changing rectangle.
-* example_04 - demonstrates the second iteration of the animated shapes program, animating a single, color changing rectangle, but using decorators on the attributes.
+* example_01 - demonstrates creating and using a simple Person class and class instance.
+* example_02 - demonstrates the first iteration of the animated shapes program, animating a single, color changing rectangle.
+* example_03 - demonstrates the second iteration of the animated shapes program, animating a single, color changing rectangle, but using decorators on the attributes.
+* example_04 - demonstrates creating and using a decorator function.
 * example_05 - demonstrates the third iteration of the animated shapes program, animating a single, color changing rectangle, but making use of inheritance.
 * example_06 - demonstrates the fourth iteration of the animated shapes program, animating multiple different color changing shapes using polymorphism
 * example_07 - demonstrates the fifth iteration of the animated shapes program, animating multiple different color changing shapes and making use of composition

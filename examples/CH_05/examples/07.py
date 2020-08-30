@@ -1,6 +1,7 @@
 # Boilerplate display window functionality
 
 from __future__ import annotations
+from abc import ABC, abstractmethod
 
 from random import choice
 from dataclasses import dataclass
@@ -49,7 +50,7 @@ class Color:
             self._color = value
 
 
-class Shape:
+class Shape(ABC):
     """This class defines generic shape object
     """
 
@@ -131,6 +132,7 @@ class Shape:
         self.fill.color = color
         return self
 
+    @abstractmethod
     def draw(self):
         """This method will be overridden by class that inherit
         Shape

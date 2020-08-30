@@ -1,6 +1,7 @@
 # Boilerplate display window functionality
 
 from __future__ import annotations
+from abc import ABC, abstractmethod
 
 from random import choice
 from dataclasses import dataclass
@@ -28,7 +29,7 @@ COLOR_PALETTE = [
 ]
 
 
-class Shape:
+class Shape(ABC):
     """This class defines generic shape object
     """
 
@@ -63,7 +64,7 @@ class Shape:
     @x.setter
     def x(self, value: int):
         """Limit the self._x to within the screen dimensions
-        
+
         Arguments:
             value {int} -- the value to set x to
         """
@@ -78,7 +79,7 @@ class Shape:
     @y.setter
     def y(self, value):
         """Limit the self._y to within the screen dimensions
-        
+
         Arguments:
             value {int} -- the value to set y to
         """
@@ -88,10 +89,10 @@ class Shape:
 
     def set_pen_color(self, color: tuple) -> Rectangle:
         """Set the pen color of the rectangle
-        
+
         Arguments:
             color {tuple} -- the color tuple to set the rectangle pen to
-        
+
         Returns:
             Rectangle -- returns self for chaining
         """
@@ -100,16 +101,17 @@ class Shape:
 
     def set_fill_color(self, color: tuple) -> Rectangle:
         """Set the fill color of the rectangle
-        
+
         Arguments:
             color {tuple} -- the color tuple to set the rectangle fill to
-        
+
         Returns:
             Rectangle -- returns self for chaining
         """
         self.fill_color = color
         return self
 
+    @abstractmethod
     def draw(self):
         """This method will be overridden by class that inherit
         Shape
@@ -134,7 +136,7 @@ class Rectangle(Shape):
 
 class Square(Rectangle):
     """This class creates a shape
-    
+
     Arguments:
         Rectangle {class} -- inherits from Rectangle
     """
@@ -158,7 +160,7 @@ class Square(Rectangle):
 
 class Circle(Shape):
     """This class creates a circle object
-    
+
     Arguments:
         Shape {class} -- inherits from the Shape class
     """
@@ -195,7 +197,8 @@ class Circle(Shape):
         center_x = self.x + radius
         center_y = self.y + radius
         arcade.draw_circle_filled(center_x, center_y, radius, self.fill_color)
-        arcade.draw_circle_outline(center_x, center_y, radius, self.pen_color, 3)
+        arcade.draw_circle_outline(
+            center_x, center_y, radius, self.pen_color, 3)
 
 
 class Display(arcade.Window):
@@ -216,7 +219,7 @@ class Display(arcade.Window):
 
     def append(self, shape: Shape):
         """Appends an instance of a shape to the list of shapes
-        
+
         Arguments:
             shape {Shape} -- Shape instance to add to the list
         """
@@ -244,7 +247,7 @@ class Display(arcade.Window):
         """This function is called once a second to
         change the colors of all the rectangles to
         a random selection from COLOR_PALETTE
-        
+
         Arguments:
             interval {int} -- interval passed in from 
             the arcade schedule function
@@ -262,8 +265,10 @@ def main():
 
     # Append the shapes to the display shapes list
     display.append(Rectangle(20, 20, 100, 200))
-    display.append(Square(400, 600, 120, dir_x=-1, dir_y=-1, speed_x=3, speed_y=2))
-    display.append(Circle(300, 400, 50, dir_x=1, dir_y=-1, speed_x=6, speed_y=4))
+    display.append(Square(400, 600, 120, dir_x=-1,
+                          dir_y=-1, speed_x=3, speed_y=2))
+    display.append(Circle(300, 400, 50, dir_x=1,
+                          dir_y=-1, speed_x=6, speed_y=4))
 
     # Change the shape colors on a schedule, every 1 second
     arcade.schedule(display.change_colors, 1)

@@ -1,8 +1,10 @@
 # Using a class to encapsulte a rectangle and how to draw and animate it
+# and limit the rectangle to within the screen space
 
 from __future__ import annotations
-import arcade
+
 from random import choice
+import arcade
 
 # Constants
 SCREEN_WIDTH = 600
@@ -25,7 +27,8 @@ COLOR_PALETTE = [
 
 
 class Rectangle:
-    """This class defines a simple rectangle object"""
+    """This class defines a simple rectangle object
+    """
 
     def __init__(
         self,
@@ -40,8 +43,8 @@ class Rectangle:
         speed_x: int = 1,
         speed_y: int = 1,
     ):
-        self.x = x
-        self.y = y
+        self._x = x
+        self._y = y
         self.width = width
         self.height = height
         self.pen_color = pen_color
@@ -50,6 +53,36 @@ class Rectangle:
         self.dir_y = 1 if dir_y > 0 else -1
         self.speed_x = speed_x
         self.speed_y = speed_y
+
+    @property
+    def x(self):
+        return self._x
+
+    @x.setter
+    def x(self, value: int):
+        """Limit the self._x to within the screen dimensions
+
+        Arguments:
+            value {int} -- the value to set x to
+        """
+        if not (0 < value < SCREEN_WIDTH - self.width):
+            self.dir_x = -self.dir_x
+        self._x += abs(self._x - value) * self.dir_x
+
+    @property
+    def y(self):
+        return self._y
+
+    @y.setter
+    def y(self, value):
+        """Limit the self._y to within the screen dimensions
+
+        Arguments:
+            value {int} -- the value to set y to
+        """
+        if not (0 < value < SCREEN_HEIGHT - self.height):
+            self.dir_y = -self.dir_y
+        self._y += abs(self._y - value) * self.dir_y
 
     def set_pen_color(self, color: tuple) -> Rectangle:
         """Set the pen color of the rectangle

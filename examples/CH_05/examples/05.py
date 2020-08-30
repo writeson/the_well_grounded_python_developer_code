@@ -3,6 +3,7 @@
 # It also makes use of Inheritance
 
 from __future__ import annotations
+from abc import ABC, abstractmethod
 
 from random import choice
 import arcade
@@ -27,7 +28,7 @@ COLOR_PALETTE = [
 ]
 
 
-class Shape:
+class Shape(ABC):
     """This class defines generic shape object
     """
 
@@ -109,6 +110,7 @@ class Shape:
         self.fill_color = color
         return self
 
+    @abstractmethod
     def draw(self):
         """This method will be overridden by class that inherit
         from Shape

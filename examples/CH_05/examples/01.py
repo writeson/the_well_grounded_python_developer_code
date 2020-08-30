@@ -1,37 +1,33 @@
+class Person:
+    """Defines a person by name"""
 
-import functools
-from time import sleep, time
+    def __init__(self, fname: str, mname: str = None, lname: str = None):
+        self.fname = fname
+        self.mname = mname
+        self.lname = lname
 
-
-def timing_decorator(func):
-    @functools.wraps(func)
-    def wrapper(delay):
-        start_time = time()
-        print("starting timing")
-        result = func(delay)
-        print(f"task elapsed time: {time() - start_time}")
-        return result
-    return wrapper
-
-
-def complex_task_1(delay):
-    sleep(delay)
-    return "task done"
-
-
-@timing_decorator
-def complex_task_2(delay):
-    sleep(delay)
-    return "task done"
+    def full_name(self) -> str:
+        """This method returns the person's full name"""
+        full_name = self.fname
+        if self.mname is not None:
+            full_name = f"{full_name} {self.mname}"
+        if self.lname is not None:
+            full_name = f"{full_name} {self.lname}"
+        return full_name
 
 
 def main():
-    delay = 1.5
+    # Create some people
+    people = [
+        Person("John", "George", "Smith"),
+        Person("Bill", lname="Thompson"),
+        Person("Sam", mname="Watson"),
+        Person("Tom"),
+    ]
 
-    new_complex_task = timing_decorator(complex_task_1)
-    print(new_complex_task(delay))
-    print()
-    print(complex_task_2(delay))
+    # Print out the full names of the people
+    for person in people:
+        print(person.full_name())
 
 
 if __name__ == "__main__":
