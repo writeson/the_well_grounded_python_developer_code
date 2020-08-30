@@ -1,6 +1,5 @@
 class Person:
-    """Defines a person by name
-    """
+    """Defines a person by name"""
 
     def __init__(self, fname: str, mname: str = None, lname: str = None):
         self.fname = fname
@@ -8,8 +7,7 @@ class Person:
         self.lname = lname
 
     def full_name(self) -> str:
-        """This method returns the person's full name
-        """
+        """This method returns the person's full name"""
         full_name = self.fname
         if self.mname is not None:
             full_name = f"{full_name} {self.mname}"

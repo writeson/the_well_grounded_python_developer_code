@@ -38,12 +38,18 @@ def better_total(values: list, new_value: int) -> int:
     return sum(temp_list)
 
 
-values_1 = [1, 2, 3]
-total_1 = total(values_1, 4)
-print(f"values_1 has been modified: {values_1}")
-print(f"total_2 is as expected: {total_1}")
-print()
-values_2 = [1, 2, 3]
-total_2 = better_total(values_2, 4)
-print(f"values_2 unchanged: {values_2}")
-print(f"total_2 is as expected: {total_2}")
+def main():
+    values_1 = [1, 2, 3]
+    total_1 = total(values_1, 4)
+    print(f"values_1 has been modified: {values_1}")
+    print(f"total_2 is as expected: {total_1}")
+    print()
+    values_2 = [1, 2, 3]
+    total_2 = better_total(values_2, 4)
+    print(f"values_2 unchanged: {values_2}")
+    print(f"total_2 is as expected: {total_2}")
+
+
+if __name__ == "__main__":
+    main()
+    

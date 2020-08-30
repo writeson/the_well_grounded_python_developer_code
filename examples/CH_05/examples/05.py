@@ -41,8 +41,8 @@ class Shape:
         fill_color: tuple = COLOR_PALETTE[1],
         dir_x: int = 1,
         dir_y: int = 1,
-        vel_x: int = 1,
-        vel_y: int = 1,
+        speed_x: int = 1,
+        speed_y: int = 1,
     ):
         self._x = x
         self._y = y
@@ -52,8 +52,8 @@ class Shape:
         self.fill_color = fill_color
         self.dir_x = 1 if dir_x > 0 else -1
         self.dir_y = 1 if dir_y > 0 else -1
-        self.vel_x = vel_x
-        self.vel_y = vel_y
+        self.speed_x = speed_x
+        self.speed_y = speed_y
 
     @property
     def x(self):
@@ -159,8 +159,8 @@ class Display(arcade.Window):
         """Update the position of the shapes in the display
         """
         for shape in self.shapes:
-            shape.x += shape.vel_x
-            shape.y += shape.vel_y
+            shape.x += shape.speed_x
+            shape.y += shape.speed_y
 
     def on_draw(self):
         """Called whenever you need to draw your window

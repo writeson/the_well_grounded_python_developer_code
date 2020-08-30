@@ -42,8 +42,8 @@ class Shape:
         fill_color: tuple = COLOR_PALETTE[1],
         dir_x: int = 1,
         dir_y: int = 1,
-        vel_x: int = 1,
-        vel_y: int = 1,
+        speed_x: int = 1,
+        speed_y: int = 1,
     ):
         self._x = x
         self._y = y
@@ -53,8 +53,8 @@ class Shape:
         self.fill_color = fill_color
         self.dir_x = 1 if dir_x > 0 else -1
         self.dir_y = 1 if dir_y > 0 else -1
-        self.vel_x = vel_x
-        self.vel_y = vel_y
+        self.speed_x = speed_x
+        self.speed_y = speed_y
 
     @property
     def x(self):
@@ -148,11 +148,11 @@ class Square(Rectangle):
         fill_color: tuple = COLOR_PALETTE[1],
         dir_x: int = 1,
         dir_y: int = 1,
-        vel_x: int = 1,
-        vel_y: int = 1,
+        speed_x: int = 1,
+        speed_y: int = 1,
     ):
         super().__init__(
-            x, y, size, size, pen_color, fill_color, dir_x, dir_y, vel_x, vel_y
+            x, y, size, size, pen_color, fill_color, dir_x, dir_y, speed_x, speed_y
         )
 
 
@@ -172,8 +172,8 @@ class Circle(Shape):
         fill_color: tuple = COLOR_PALETTE[1],
         dir_x: int = 1,
         dir_y: int = 1,
-        vel_x: int = 1,
-        vel_y: int = 1,
+        speed_x: int = 1,
+        speed_y: int = 1,
     ):
         super().__init__(
             x,
@@ -184,8 +184,8 @@ class Circle(Shape):
             fill_color,
             dir_x,
             dir_y,
-            vel_x,
-            vel_y,
+            speed_x,
+            speed_y,
         )
 
     def draw(self):
@@ -226,8 +226,8 @@ class Display(arcade.Window):
         """Update the position of the shapes in the display
         """
         for shape in self.shapes:
-            shape.x += shape.vel_x
-            shape.y += shape.vel_y
+            shape.x += shape.speed_x
+            shape.y += shape.speed_y
 
     def on_draw(self):
         """Called whenever you need to draw your window
@@ -262,8 +262,8 @@ def main():
 
     # Append the shapes to the display shapes list
     display.append(Rectangle(20, 20, 100, 200))
-    display.append(Square(400, 600, 120, dir_x=-1, dir_y=-1, vel_x=3, vel_y=2))
-    display.append(Circle(300, 400, 50, dir_x=1, dir_y=-1, vel_x=6, vel_y=4))
+    display.append(Square(400, 600, 120, dir_x=-1, dir_y=-1, speed_x=3, speed_y=2))
+    display.append(Circle(300, 400, 50, dir_x=1, dir_y=-1, speed_x=6, speed_y=4))
 
     # Change the shape colors on a schedule, every 1 second
     arcade.schedule(display.change_colors, 1)

@@ -25,8 +25,7 @@ COLOR_PALETTE = [
 
 
 class Rectangle:
-    """This class defines a simple rectangle object
-    """
+    """This class defines a simple rectangle object"""
 
     def __init__(
         self,
@@ -38,8 +37,8 @@ class Rectangle:
         fill_color: tuple = COLOR_PALETTE[1],
         dir_x: int = 1,
         dir_y: int = 1,
-        vel_x: int = 1,
-        vel_y: int = 1,
+        speed_x: int = 1,
+        speed_y: int = 1,
     ):
         self.x = x
         self.y = y
@@ -49,8 +48,8 @@ class Rectangle:
         self.fill_color = fill_color
         self.dir_x = 1 if dir_x > 0 else -1
         self.dir_y = 1 if dir_y > 0 else -1
-        self.vel_x = vel_x
-        self.vel_y = vel_y
+        self.speed_x = speed_x
+        self.speed_y = speed_y
 
     def set_pen_color(self, color: tuple) -> Rectangle:
         """Set the pen color of the rectangle
@@ -117,8 +116,8 @@ class Display(arcade.Window):
         """Update the position of the rectangles in the display
         """
         for rectangle in self.rectangles:
-            rectangle.x += rectangle.vel_x
-            rectangle.y += rectangle.vel_y
+            rectangle.x += rectangle.speed_x
+            rectangle.y += rectangle.speed_y
 
     def on_draw(self):
         """Called whenever you need to draw your window

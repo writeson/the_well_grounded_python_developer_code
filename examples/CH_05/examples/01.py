@@ -1,6 +1,5 @@
 
 import functools
-from random import uniform
 from time import sleep, time
 
 
@@ -15,16 +14,24 @@ def timing_decorator(func):
     return wrapper
 
 
+def complex_task_1(delay):
+    sleep(delay)
+    return "task done"
+
+
 @timing_decorator
-def complex_task(delay):
+def complex_task_2(delay):
     sleep(delay)
     return "task done"
 
 
 def main():
-    for _ in range(3):
-        delay = uniform(0.25, 3)
-        print(complex_task(delay))
+    delay = 1.5
+
+    new_complex_task = timing_decorator(complex_task_1)
+    print(new_complex_task(delay))
+    print()
+    print(complex_task_2(delay))
 
 
 if __name__ == "__main__":

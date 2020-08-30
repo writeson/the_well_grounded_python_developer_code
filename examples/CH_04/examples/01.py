@@ -26,9 +26,15 @@ def split_fullname(full_name: str) -> Tuple[str, str, str]:
     return (fname, mname, lname)
 
 
-fname, mname, lname = split_fullname("John")
-print(fname, mname, lname)
-fname, mname, lname = split_fullname("John Smith")
-print(fname, mname, lname)
-fname, mname, lname = split_fullname("John James Smith")
-print(fname, mname, lname)
+def main():
+    fname, mname, lname = split_fullname("John")
+    print(fname, mname, lname)
+    fname, mname, lname = split_fullname("John Smith")
+    print(fname, mname, lname)
+    fname, mname, lname = split_fullname("John James Smith")
+    print(fname, mname, lname)
+
+
+if __name__ == "__main__":
+    main()
+    

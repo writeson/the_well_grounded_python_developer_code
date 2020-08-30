@@ -28,7 +28,12 @@ def full_name(fname:str , mname: str, lname: str) -> str:
     return " ".join(full_name.split())
 
 
-full_name_and_print("John", "", "Smith")
+def main():
+    full_name_and_print("John", "", "Smith")
 
-the_full_name = full_name("John", "", "Smith")
-print(the_full_name)
+    the_full_name = full_name("John", "", "Smith")
+    print(the_full_name)
+
+
+if __name__ == "__main__":
+    main()
