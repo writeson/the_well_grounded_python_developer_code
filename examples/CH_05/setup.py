@@ -4,7 +4,7 @@ setup(
     author="Doug Farrell",
     description="Example programs for The Well-Grounded Python Developer chapter 5",
     name="examples",
-    version="0.1.0dev",
+    version="0.1.0.dev0",
     packages=find_packages(),
     license="Creative Commons Attribution-Noncommercial-Share Alike license",
     long_description=open("README.md").read(),
