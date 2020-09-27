@@ -11,11 +11,10 @@ setup(
     install_requires=[
         "flask==1.1.2",
     ],
-    # entry_points={
-    #     "console_scripts": [
-    #         "example_01 = examples.01:main",
-    #         "example_02 = examples.02:main",
-    #         "example_03 = examples.03:main",
-    #     ]
-    # }
+    entry_points={
+        "console_scripts": [
+            "example_01 = examples.01.app:run",
+            "example_02 = examples.02.app:run"
+        ]
+    }
 )
