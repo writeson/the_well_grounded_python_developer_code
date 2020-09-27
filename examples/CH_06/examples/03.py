@@ -58,5 +58,9 @@ def prompt_user_for_data():
         successful = True
 
 
-# run the program
-prompt_user_for_data()
+def main():
+    prompt_user_for_data()
+
+
+if __name__ == "__main__":
+    main()

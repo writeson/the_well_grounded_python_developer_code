@@ -17,4 +17,9 @@ def func_c(dividend: float, divisor: float) -> float:
     return dividend / divisor
 
 
-func_a()
+def main():
+    func_a()
+
+
+if __name__ == "__main__":
+    main()

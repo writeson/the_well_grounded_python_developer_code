@@ -40,8 +40,8 @@ class Rectangle:
         fill_color: tuple = COLOR_PALETTE[1],
         dir_x: int = 1,
         dir_y: int = 1,
-        vel_x: int = 1,
-        vel_y: int = 1,
+        speed_x: int = 1,
+        speed_y: int = 1,
     ):
         self._x = x
         self._y = y
@@ -51,8 +51,8 @@ class Rectangle:
         self.fill_color = fill_color
         self.dir_x = 1 if dir_x > 0 else -1
         self.dir_y = 1 if dir_y > 0 else -1
-        self.vel_x = vel_x
-        self.vel_y = vel_y
+        self.speed_x = speed_x
+        self.speed_y = speed_y
 
     @property
     def x(self):
@@ -61,7 +61,7 @@ class Rectangle:
     @x.setter
     def x(self, value: int):
         """Limit the self._x to within the screen dimensions
-        
+
         Arguments:
             value {int} -- the value to set x to
         """
@@ -76,7 +76,7 @@ class Rectangle:
     @y.setter
     def y(self, value):
         """Limit the self._y to within the screen dimensions
-        
+
         Arguments:
             value {int} -- the value to set y to
         """
@@ -86,10 +86,10 @@ class Rectangle:
 
     def set_pen_color(self, color: tuple) -> Rectangle:
         """Set the pen color of the rectangle
-        
+
         Arguments:
             color {tuple} -- the color tuple to set the rectangle pen to
-        
+
         Returns:
             Rectangle -- returns self for chaining
         """
@@ -98,10 +98,10 @@ class Rectangle:
 
     def set_fill_color(self, color: tuple) -> Rectangle:
         """Set the fill color of the rectangle
-        
+
         Arguments:
             color {tuple} -- the color tuple to set the rectangle fill to
-        
+
         Returns:
             Rectangle -- returns self for chaining
         """
@@ -139,7 +139,7 @@ class Display(arcade.Window):
 
     def append(self, rectangle: Rectangle):
         """Appends an instance of a rectangle to the list of rectangles
-        
+
         Arguments:
             rectangle {Rectangle} -- Rectangle instance to add to the list
         """
@@ -149,8 +149,8 @@ class Display(arcade.Window):
         """Update the position of the rectangles in the display
         """
         for rectangle in self.rectangles:
-            rectangle.x += rectangle.vel_x
-            rectangle.y += rectangle.vel_y
+            rectangle.x += rectangle.speed_x
+            rectangle.y += rectangle.speed_y
 
     def on_draw(self):
         """Called whenever you need to draw your window
@@ -167,7 +167,7 @@ class Display(arcade.Window):
         """This function is called once a second to
         change the colors of all the rectangles to
         a random selection from COLOR_PALETTE
-        
+
         Arguments:
             interval {int} -- interval passed in from 
             the arcade schedule function
@@ -179,7 +179,7 @@ class Display(arcade.Window):
 
 
 # Main code entry point
-if __name__ == "__main__":
+def main():
     # Create the display instance
     display = Display("Example 01")
 
@@ -194,3 +194,7 @@ if __name__ == "__main__":
 
     # Run the application
     arcade.run()
+
+
+if __name__ == "__main__":
+    main()
