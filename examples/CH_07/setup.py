@@ -10,6 +10,7 @@ setup(
     long_description=open("README.md").read(),
     install_requires=[
         "flask==1.1.2",
+        "gunicorn==20.0.4"
     ],
     entry_points={
         "console_scripts": [
