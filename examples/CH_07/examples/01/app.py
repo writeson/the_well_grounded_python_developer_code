@@ -8,5 +8,9 @@ def home():
     return "Hello World!"
 
 
-def run():
+def main():
+    app.run()
+
+
+if __name__ == "__main__":
     app.run()
