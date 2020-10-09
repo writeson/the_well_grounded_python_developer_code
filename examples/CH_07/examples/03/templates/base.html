@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% block head %}
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/myblog.css') }}">
+    {% block stylesheet %}{% endblock %}
+    <title>{% block title %}{% endblock %}</title>
+    {% endblock %}
+</head>
+
+<body>
+    <div id="header">{% block header %}{% endblock %}</div>
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+    <div id="footer">
+        {% block footer %}
+        <h4>&copy; Copyright 2020 by MyBlog</h4>
+        {% endblock %}
+    </div>
+</body>
+{% block javascript %}{% endblock %}
+
+</html>

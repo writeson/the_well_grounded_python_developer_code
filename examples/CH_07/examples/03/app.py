@@ -3,11 +3,15 @@ from datetime import datetime
 
 app = Flask(__name__)
 
+visits = 0
+
 
 @app.route("/")
 def home():
+    global visits
     now = datetime.now()
-    return render_template("index.html", now=now)
+    visits += 1
+    return render_template("index.html", now=now, visits=visits)
 
 
 def main():
