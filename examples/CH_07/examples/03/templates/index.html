@@ -1,14 +1,8 @@
 {% extends "base.html" %}
-{% block title %}MyBlog Home Page{% endblock %}
-
-{% block header %}
-{{ super() }}
-<h1>MyBlog Home Page</h1>
-{% endblock %}
 
 {% block content %}
-<h2>Current time: {{data["now"]}}</h2>
-<p>Page visits: {{data["page_visit"].counts()}}</p>
+<h2>Current time: {{ data["now"] }}</h2>
+<p>Page visits: {{ data["page_visit"].counts() }}</p>
 <p>List of available banner colors:</p>
 <ul>
     {% for banner_color in data["banner_colors"]["display"] %}
@@ -30,7 +24,7 @@
 {% block javascript %}
 {{ super() }}
 <script>
-    const banner_colors = {{ data["banner_colors"]["js"]| safe}};
+    const banner_colors = {{ data["banner_colors"]["js"]| safe }};
 </script>
 <script src="{{ url_for('static', filename='js/index.js') }}"></script>
 {% endblock %}
