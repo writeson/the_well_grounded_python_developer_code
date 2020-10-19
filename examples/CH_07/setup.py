@@ -16,10 +16,4 @@ setup(
         "flask==1.1.2",
         "gunicorn==20.0.4"
     ],
-    entry_points={
-        "console_scripts": [
-            "example_01 = examples.01.app:main",
-            "example_02 = examples.02.app:main"
-        ]
-    }
 )
