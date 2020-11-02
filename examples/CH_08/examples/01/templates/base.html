@@ -1,0 +1,23 @@
+{% extends "bootstrap/base.html" %}
+
+{% block html_attribs %}lang="en"{% endblock html_attribs %}
+
+{% block title %}
+<title>MyBlog</title>
+{% endblock title %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/myblog.css') }}">
+{% endblock %}
+
+{% block content %}
+<div id="content">
+    {% block content %}{% endblock %}
+</div>
+{% endblock content %}
+
+{% block footer %}
+<h4>&copy; Copyright 2020 by MyBlog</h4>
+{% endblock footer %}
+
+{% block scripts %}{% endblock %}
