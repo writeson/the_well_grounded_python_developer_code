@@ -4,14 +4,6 @@ from random import sample
 import json
 
 app = Flask(__name__)
-thing = 1
-Done = True
-
-if thing == Done:
-    print("Done")
-
-if thing != Done:
-    print("Not Done")
 
 
 class PageVisit:
