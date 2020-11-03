@@ -6,18 +6,25 @@
 <title>MyBlog</title>
 {% endblock title %}
 
-{% block styles %}
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/myblog.css') }}">
-{% endblock %}
-
 {% block content %}
-<div id="content">
-    {% block content %}{% endblock %}
+<style>
+    .jumbotron {
+        height: 75px;
+        text-align: center;
+        line-height: 75px;
+        background-color: darkcyan;
+    }
+
+    .jumbotron h1 {
+        line-height: 20px;
+    }
+</style>
+<div class="jumbotron jumbotron-fluid">
+    <h1>MyBlog Home Page</h1>
 </div>
+{% block myblog_content %}{% endblock myblog_content%}
 {% endblock content %}
 
 {% block footer %}
 <h4>&copy; Copyright 2020 by MyBlog</h4>
 {% endblock footer %}
-
-{% block scripts %}{% endblock %}

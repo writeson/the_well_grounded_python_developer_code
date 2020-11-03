@@ -1,20 +1,35 @@
 {% extends "base.html" %}
 
-{% block content %}
-<h2>Current time: {{ data["now"] }}</h2>
-<p>Page visits: {{ data["page_visit"].counts() }}</p>
-<p>List of available banner colors:</p>
-<ul>
-    {% for banner_color in data["banner_colors"]["display"] %}
-    <li>{{ banner_color }}</li>
-    {% endfor %}
-</ul>
-<div id="color-change">
-    <button class="change-banner-color">
+{% block html_attribs %}lang="en"{% endblock html_attribs %}
+
+{% block title %}
+<title>MyBlog</title>
+{% endblock title %}
+
+{% block myblog_content %}
+<div id="myblog_content">
+    <div class="card bg-warning mb-3 font-weight-bold">
+        <div class="card-body">
+            Current time: {{ data["now"] }}
+        </div>
+    </div>
+    <p>Page visits: {{ data["page_visit"].counts() }}</p>
+    <p>List of available banner colors:</p>
+    <ul class="list-group">
+        {% for banner_color in data["banner_colors"]["display"] %}
+        <li class="list-group-item">{{ banner_color }}</li>
+        {% endfor %}
+    </ul>
+    <br />
+    <button id="change-banner-color" type="button" class="btn btn-primary">
         Change Banner Color
     </button>
 </div>
 {% endblock %}
+
+{% block footer %}
+<h4>&copy; Copyright 2020 by MyBlog</h4>
+{% endblock footer %}
 
 {% block styles %}
 {{ super() }}
