@@ -1,0 +1,18 @@
+.jumbotron {
+  margin-bottom: 0;
+  background-color: darkcyan;
+  background: var(--background-url) no-repeat center center / cover;
+  background-image: linear-gradient(
+    to bottom rgba(255, 255, 255, 0.6) 0%,
+    rgba(255, 255, 255, 0.9) 100%
+  );
+  background-size: 100% 100%;
+}
+
+hr {
+  border-top-color: rgba(0, 0, 0, 1);
+}
+
+#myblog_content {
+  margin: 20px;
+}
