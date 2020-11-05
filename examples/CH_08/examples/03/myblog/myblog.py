@@ -1,11 +1,8 @@
-from flask import Flask, render_template
-from flask_bootstrap import Bootstrap
+from flask import render_template
 from datetime import datetime
 from random import sample
 import json
-
-app = Flask(__name__)
-bootstratp = Bootstrap(app)
+from app import app
 
 
 class PageVisit:
@@ -40,3 +37,8 @@ def home():
             "js": json.dumps(banner_colors)
         }
     })
+
+
+@app.route("/about")
+def about():
+    return render_template("about.html")

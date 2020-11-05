@@ -1,0 +1,14 @@
+.jumbotron {
+  height: 75px;
+  text-align: center;
+  line-height: 75px;
+  background-color: darkcyan;
+}
+
+.jumbotron h1 {
+  line-height: 20px;
+}
+
+#myblog_content {
+  margin: 20px;
+}

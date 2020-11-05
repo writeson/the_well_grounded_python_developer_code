@@ -1,11 +1,10 @@
-from flask import Flask, render_template
-from flask_bootstrap import Bootstrap
+from app import app
+
+from flask import render_template
 from datetime import datetime
 from random import sample
 import json
 
-app = Flask(__name__)
-bootstratp = Bootstrap(app)
 
 
 class PageVisit:

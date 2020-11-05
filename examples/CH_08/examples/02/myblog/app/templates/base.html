@@ -1,0 +1,17 @@
+{% extends "bootstrap/base.html" %}
+
+{% block html_attribs %}lang="en"{% endblock%}
+
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base.css') }}"/>
+{% endblock styles %}
+
+{% block title %}MyBlog{% endblock %}
+
+{% block content %}
+{% block myblog_content %}{% endblock %}
+<footer class="container-fluid">
+  <nav class="navbar fixed-bottom navbar-text">Copyright &copy; 2020 - MyBlog</nav>
+</footer>
+{% endblock %}

@@ -6,6 +6,7 @@
 	],
 	"settings": {
 		"git.ignoreLimitWarning": true,
-		"editor.formatOnSave": true
+		"editor.formatOnSave": true,
+		"python.pythonPath": "/Users/dfarrell/.pyenv/versions/3.8.0/bin/python3.8"
 	}
 }
