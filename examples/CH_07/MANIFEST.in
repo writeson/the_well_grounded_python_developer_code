@@ -1,0 +1,3 @@
+include README.md
+recursive-include examples/02/templates *
+global-exclude *.pyc
