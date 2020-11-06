@@ -1,10 +1,8 @@
-from app import app
-
 from flask import render_template
 from datetime import datetime
 from random import sample
 import json
-
+from . import home_bp
 
 
 class PageVisit:
@@ -28,7 +26,7 @@ class BannerColors:
         return sample(BannerColors.COLORS, 5)
 
 
-@app.route("/")
+@home_bp.route("/")
 def home():
     banner_colors = BannerColors().get_colors()
     return render_template("index.html", data={
@@ -39,3 +37,8 @@ def home():
             "js": json.dumps(banner_colors)
         }
     })
+
+
+@home_bp.route("/about")
+def about():
+    return render_template("about.html")
