@@ -153,3 +153,6 @@ dmypy.json
 .vscode
 *.code-workspace
 .venv
+
+# Keep environment files out of GitHub
+.env

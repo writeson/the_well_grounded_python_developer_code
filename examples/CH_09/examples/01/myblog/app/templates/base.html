@@ -2,6 +2,11 @@
 
 {% block html_attribs %}lang="en"{% endblock%}
 
+{% block head %}
+  {{ super() }}
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+{% endblock %}
+
 {% block styles %}
   {{ super() }}
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base.css') }}"/>
@@ -10,7 +15,7 @@
 {% block title %}MyBlog{% endblock %}
 
 {% block content %}
-  {% if request.path != url_for("home") %}
+  {% if request.path != url_for("home_bp.home") %}
     {{ navbar() }}
   {% endif %}
   {% block myblog_content %}{% endblock %}
@@ -19,9 +24,17 @@
   </footer>
 {% endblock %}
 
+{% block scripts %}
+  {{ super() }}
+  <script src="{{ url_for('static', filename='js/base.js') }}"></script>
+{% endblock scripts %}
+
 {% macro navbar() %}
+
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="#">MyBlog</a>
+    <a class="navbar-brand" href="#">
+      <img src="{{url_for('static', filename='images/myblog_brand_icon.svg')}}" alt="logo" height="30" width="35">
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -29,10 +42,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="{{url_for('home')}}">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="{{url_for('home_bp.home')}}">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{url_for('about')}}">About</a>
+          <a class="nav-link" href="{{url_for('home_bp.about')}}">About</a>
         </li>
       </ul>
     </div>
@@ -48,8 +61,3 @@
     </div>
   </div>
 {% endmacro %}
-
-{% block scripts %}
-  {{ super() }}
-  <script src="{{ url_for('static', filename='js/base.js') }}"></script>
-{% endblock scripts %}
