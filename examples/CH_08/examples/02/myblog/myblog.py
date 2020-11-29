@@ -30,6 +30,7 @@ class BannerColors:
 def home():
     banner_colors = BannerColors().get_colors()
     return render_template("index.html", data={
+        "title": "MyBlog",
         "now": datetime.now(),
         "page_visit": PageVisit(),
         "banner_colors": {

@@ -1,12 +1,1 @@
-.jumbotron {
-  margin-bottom: 0;
-  background: var(--background-url) no-repeat center center / cover;
-}
 
-hr {
-  border-top-color: rgba(0, 0, 0, 1);
-}
-
-#myblog_content {
-  margin: 20px;
-}

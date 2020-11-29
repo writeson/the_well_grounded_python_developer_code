@@ -1,9 +1,4 @@
 from flask import Flask
-from flask_bootstrap import Bootstrap
-
-
-# global instances
-bs = Bootstrap()
 
 
 def create_app():
@@ -11,9 +6,6 @@ def create_app():
 
     app = Flask(__name__, instance_relative_config=False)
     app.config.from_object('config.Config')
-
-    # initialize the plugins
-    bs.init_app(app)
 
     with app.app_context():
         from . import home

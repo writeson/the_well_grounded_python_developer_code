@@ -1,8 +1,4 @@
-footer nav.navbar {
-  background-color: lightgrey;
-}
-
-.navbar-text {
-  float: none;
-  text-align: center;
+.banner {
+  background: var(--background-url) no-repeat center center / cover;
+  border-radius: 0;
 }
