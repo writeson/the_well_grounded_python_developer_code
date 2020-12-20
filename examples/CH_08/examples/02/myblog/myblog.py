@@ -1,7 +1,6 @@
 from flask import render_template
 from datetime import datetime
 from random import sample
-import json
 from app import app
 
 
@@ -28,13 +27,8 @@ class BannerColors:
 
 @app.route("/")
 def home():
-    banner_colors = BannerColors().get_colors()
     return render_template("index.html", data={
-        "title": "MyBlog",
         "now": datetime.now(),
         "page_visit": PageVisit(),
-        "banner_colors": {
-            "display": banner_colors,
-            "js": json.dumps(banner_colors)
-        }
+        "banner_colors": BannerColors().get_colors()
     })
