@@ -1,5 +1,5 @@
 window.addEventListener('load', function (event) {
-    let banner = document.querySelector("div.banner h1");
+    let banner = document.querySelector("div.banner");
     window.addEventListener('click', function (event) {
         // is this the click event we're looking for?
         if (event.target.matches('#change-banner-color')) {

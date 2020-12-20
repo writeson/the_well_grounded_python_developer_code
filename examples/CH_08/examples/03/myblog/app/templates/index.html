@@ -13,7 +13,7 @@
                 List of available banner colors
             </div>
             <ul class="list-group list-group-flush">
-                {% for banner_color in data["banner_colors"]["display"] %}
+                {% for banner_color in data["banner_colors"] %}
                 <li class="list-group-item">{{ banner_color }}</li>
                 {% endfor %}
             </ul>
@@ -28,7 +28,7 @@
 {% block scripts %}
     {{ super() }}
     <script>
-    const banner_colors = {{ data["banner_colors"]["js"]| safe }};
+    const banner_colors = {{ json.dumps(data["banner_colors"])| safe }};
     </script>
     <script src="{{ url_for('static', filename='js/index.js') }}"></script>
 {% endblock %}

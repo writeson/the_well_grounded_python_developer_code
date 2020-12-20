@@ -1,9 +1,9 @@
 .banner.card {
-  border: 0;
-  border-radius: 0;
-  background-clip: none;
-}
-
+    border: 0;
+    border-radius: 0;
+    background-clip: none;
+  }
+  
 .banner {
   display: none;
 }

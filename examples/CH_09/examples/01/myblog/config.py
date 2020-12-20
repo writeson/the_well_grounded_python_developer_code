@@ -6,8 +6,20 @@ from pathlib import Path
 load_dotenv(Path(__file__).parent / ".env")
 
 
-class Config:
-    """Get the configuration information for the application
+class ConfigBase:
+    """This is the configuration base class from which the
+    others are derived
+    """
+    SECRET_KEY = os.getenv("SECRET_KEY")
+
+
+class ConfigDevelopment(ConfigBase):
+    """Get the development configuration information for the application
     """
     DEBUG = True
-    SECRET_KEY = os.getenv("SECRET_KEY")
+
+
+class ConfigProduction(ConfigBase):
+    """Get the production configuration information for the application
+    """
+    DEBUG = False    
