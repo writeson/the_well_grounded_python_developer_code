@@ -15,6 +15,7 @@ setup(
     install_requires=[
         "flask==1.1.2",
         "flask-bootstrap4==4.0.2",
-        "gunicorn==20.0.4"
+        "gunicorn==20.0.4",
+        "waitress==1.4.4"
     ],
 )
