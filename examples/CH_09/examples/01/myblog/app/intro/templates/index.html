@@ -28,7 +28,7 @@
 {% block scripts %}
     {{ super() }}
     <script>
-    const banner_colors = {{ json.dumps(data["banner_colors"])| safe }};
+    const banner_colors = {{ data["banner_colors"] | tojson | safe }};
     </script>
     <script src="{{ url_for('.static', filename='js/index.js') }}"></script>
 {% endblock %}

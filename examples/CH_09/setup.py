@@ -14,8 +14,8 @@ setup(
     python_requires=">=3.8.0",
     install_requires=[
         "flask==1.1.2",
-        "Flask-Bootstrap4==4.0.2",
         "python-dotenv==0.15.0",
+        "flask-debugtoolbar==0.11.0",
         "gunicorn==20.0.4"
     ],
 )

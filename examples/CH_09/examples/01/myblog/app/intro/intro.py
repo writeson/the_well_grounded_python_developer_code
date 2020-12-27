@@ -1,8 +1,7 @@
 from flask import render_template
 from datetime import datetime
 from random import sample
-import json
-from . import home_bp
+from . import intro_bp
 
 
 class PageVisit:
@@ -26,7 +25,7 @@ class BannerColors:
         return sample(BannerColors.COLORS, 5)
 
 
-@home_bp.route("/")
+@intro_bp.route("/")
 def home():
     return render_template("index.html", data={
         "now": datetime.now(),
@@ -35,6 +34,6 @@ def home():
     })
 
 
-@home_bp.route("/about")
+@intro_bp.route("/about")
 def about():
     return render_template("about.html")
