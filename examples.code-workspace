@@ -7,6 +7,6 @@
 	"settings": {
 		"git.ignoreLimitWarning": true,
 		"editor.formatOnSave": true,
-		"python.pythonPath": "/Users/dfarrell/.pyenv/versions/3.8.0/bin/python3.8"
+		"python.pythonPath": "/Users/dfarrell/OneDrive/projects/manning_publishing/becoming_a_pythonista/code/examples/CH_09/.venv/binpython3.8",
 	}
 }

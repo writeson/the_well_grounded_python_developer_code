@@ -16,6 +16,10 @@ setup(
         "flask==1.1.2",
         "python-dotenv==0.15.0",
         "flask-debugtoolbar==0.11.0",
+        "flask-login==0.5.0",
+        "flask-bcrypt==0.7.1",
+        "flask-wtf==0.14.3",
+        "email-validator==1.1.2",
         "gunicorn==20.0.4"
     ],
 )

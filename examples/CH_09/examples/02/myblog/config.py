@@ -16,7 +16,9 @@ class ConfigBase:
 class ConfigDevelopment(ConfigBase):
     """Get the development configuration information for the application
     """
-    FLAKS_DEBUG = 1
+    FLASK_DEBUG = 1
+    DEBUG_TB_ENABLED = bool(int(os.getenv("DEBUG_TB_ENABLED")))
+    DEBUG_TB_INTERCEPT_REDIRECTS = bool(int(os.getenv("DEBUG_TB_INTERCEPT_REDIRECTS")))
 
 
 class ConfigProduction(ConfigBase):

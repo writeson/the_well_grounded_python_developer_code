@@ -17,8 +17,9 @@
         --background-url: url({{url_for("static", filename= "images/myblog_banner_50.png")}});
     }
   </style>
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base.css') }}"/>
+  <link rel='shortcut icon' type='image/x-icon' href="{{ url_for('static', filename='images/favicon.ico') }}" />
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" />
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base.css') }}" />
   {% endblock %}
 </head>
 <body class="d-flex flex-column h-100">

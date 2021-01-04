@@ -1,0 +1,63 @@
+{% import "macros.jinja" as macros %}
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyBlog</title>
+  {% block styles %}
+  <style>
+    :root {
+      --background-url: url({{url_for("static", filename= "images/myblog_banner_50.png")}});
+    }
+  </style>
+  <link rel='shortcut icon' type='image/x-icon' href="{{ url_for('static', filename='images/favicon.ico') }}" />
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base.css') }}" />
+  {% endblock %}
+</head>
+<body class="d-flex flex-column h-100">
+  <div class="banner card">
+    <div class="card-body">
+      <div class="col-md-4 offset-md-1">
+        <h2 class="card-title fw-bold">MyBlog Home Page</h2>
+        <p class="card-text">Just a blog to call my own</p>
+      </div>
+    </div>
+  </div>
+  <main class="flex-shrink-0">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <a class="navbar-brand ml-2" href="{{url_for('intro_bp.home')}}">
+        MyBlog
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav">
+          {{ macros.build_nav_item(nav_item) }}
+        </div>
+      </div>
+      <div class="navbar-nav navbar-right">
+        {{ macros.build_login_logout_items(current_user) }}
+      </div>
+    </nav>
+
+    {# insert the flask flash handler #}
+    {{ macros.flask_flash_messages() }}
+  
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="footer mt-auto py-1 bg-light">
+    <div class="container text-center">
+      <span class="text-muted">&copy; Copyright 2021 / MyBlog</span>
+    </div>
+  </footer>
+
+  {% block scripts %}
+  <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/base.js') }}"></script>
+  {% endblock %}
+</body>
+</html>
