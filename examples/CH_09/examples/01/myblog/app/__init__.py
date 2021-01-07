@@ -12,7 +12,7 @@ def create_app(environment="production"):
     dictConfig(_logging_configuration(environment))
 
     # create the flask app instance
-    app = Flask(__name__, instance_relative_config=False)
+    app = Flask(__name__, instance_relative_config=True)
     app.config.from_object(f"config.Config{environment.title()}")
 
     if environment == "development":
