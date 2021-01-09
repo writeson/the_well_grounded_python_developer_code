@@ -22,13 +22,16 @@ def create_app(environment="production"):
 
     # initialize plugins
 
-    @app.route('/favicon.ico')
-    def favicon():
-        return send_from_directory(os.path.join(app.root_path, 'static'),
-                                   'favicon.ico', mimetype='image/vnd.microsoft.icon')
-
     # with the app instance context register the blueprints
     with app.app_context():
+
+        @app.route('/favicon.ico')
+        def favicon():
+            return send_from_directory(
+                os.path.join(app.root_path, 'static'),
+                'favicon.ico',
+                mimetype="image/vnd.microsoft.icon"
+            )
 
         # import the routes
         from . import intro
