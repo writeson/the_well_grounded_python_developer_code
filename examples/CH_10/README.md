@@ -1,4 +1,4 @@
-# Chapter 9 Example Programs
+# Chapter 10 Example Programs
 
 This directory contains the Chapter 8 examples from the book and scripts to install and run those examples.
 
@@ -28,4 +28,4 @@ The command will pip install any modules necessary to run the example programs i
 
 To run the example programs just enter the command line shortcut shown in the list below. The list below shows the shortcut command and a brief description of what the command does.
 
-* Example 01 further improves the application structure, adds the Flask Debug Toolbar, improved logging and external configuration information
+* Example 01 modifies adds user login to the application without database support
