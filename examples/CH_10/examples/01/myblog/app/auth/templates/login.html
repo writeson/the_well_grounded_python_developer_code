@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% import "macros.jinja" as macros %}
+
+{% block content %}
+<div class="login-wrapper mx-auto mt-3">
+    <div class="container login">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">User Login</h5>
+                <div class="card-text">
+                    <form action="" method="POST" novalidate>
+                        {{form.csrf_token}}
+                        <div class="mb-3">
+                            {{form.email.label(class="form-label")}}
+                            {{form.email(class="form-control")}}
+                            {{macros.validation_errors(form.email.errors)}}
+                        </div>
+                        <div class="mb-3">
+                            {{form.password.label(class="form-label")}}
+                            {{form.password(class="form-control")}}
+                            {{macros.validation_errors(form.password.errors)}}
+                        </div>
+                        <div class="mb-3">
+                            {{form.remember_me}}
+                            {{form.remember_me.label(class="form-check-label")}}
+                        </div>
+                        <div>
+                            {{form.submit(class="btn btn-primary")}}
+                        </div>
+                    </form>
+                    <div>
+                        <a href="{{url_for('auth_bp.register_new_user')}}">
+                            New Users click here to register
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('.static', filename='css/login.css') }}" />
+{% endblock %}

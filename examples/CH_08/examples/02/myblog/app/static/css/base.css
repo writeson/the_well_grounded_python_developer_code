@@ -1,8 +1,16 @@
-footer nav.navbar {
-  background-color: lightgrey;
-}
-
-.navbar-text {
-  float: none;
-  text-align: center;
-}
+.banner.card {
+    border: 0;
+    border-radius: 0;
+    background-clip: none;
+  }
+  
+  .banner {
+    display: none;
+  }
+  
+  @media (min-width: 768px) {
+    .banner {
+      display: block;
+      background: var(--background-url) no-repeat center center / cover;
+    }
+  }

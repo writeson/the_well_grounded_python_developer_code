@@ -1,11 +1,8 @@
 from flask import Flask, render_template
-from flask_bootstrap import Bootstrap
 from datetime import datetime
 from random import sample
-import json
 
 app = Flask(__name__)
-bootstratp = Bootstrap(app)
 
 
 class PageVisit:
@@ -31,12 +28,8 @@ class BannerColors:
 
 @app.route("/")
 def home():
-    banner_colors = BannerColors().get_colors()
     return render_template("index.html", data={
         "now": datetime.now(),
         "page_visit": PageVisit(),
-        "banner_colors": {
-            "display": banner_colors,
-            "js": json.dumps(banner_colors)
-        }
+        "banner_colors": BannerColors().get_colors()
     })
