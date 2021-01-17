@@ -16,6 +16,7 @@ setup(
         "flask==1.1.2",
         "python-dotenv==0.15.0",
         "flask-debugtoolbar==0.11.0",
-        "gunicorn==20.0.4"
+        "gunicorn==20.0.4",
+        "waitress==1.4.4"
     ],
 )

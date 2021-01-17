@@ -1,18 +1,15 @@
 import os
-from flask import Flask
-from flask import send_from_directory
-import logging
+from flask import Flask, send_from_directory
 from logging.config import dictConfig
 
 
 def create_app(environment="production"):
-    """Initialize the Flask core application"""
+    """Initialize the Flask app instance"""
 
     # configure logging prior to creating the app instance
     dictConfig(_logging_configuration(environment))
 
-    # create the flask app instance
-    app = Flask(__name__, instance_relative_config=True)
+    app = Flask(__name__)
     app.config.from_object(f"config.Config{environment.title()}")
 
     if environment == "development":
@@ -20,11 +17,9 @@ def create_app(environment="production"):
         toolbar = DebugToolbarExtension()
         toolbar.init_app(app)
 
-    # initialize plugins
-
-    # with the app instance context register the blueprints
     with app.app_context():
 
+        # create a route to the favicon.ico file
         @app.route('/favicon.ico')
         def favicon():
             return send_from_directory(

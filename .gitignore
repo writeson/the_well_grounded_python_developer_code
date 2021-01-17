@@ -156,3 +156,6 @@ dmypy.json
 
 # Keep environment files out of GitHub
 .env
+
+# keep secrets out of GitHub
+.secrets.*

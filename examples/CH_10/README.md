@@ -22,10 +22,10 @@ To install any necessary modules for this chapter run the setup.py script with t
 python setup.py install
 ```
 
-The command will pip install any modules necessary to run the example programs in the chapter and create shortcuts to run the example programs.
+The command will pip install any modules necessary to run the example programs in the chapter.
 
 ## Example Programs
 
 To run the example programs just enter the command line shortcut shown in the list below. The list below shows the shortcut command and a brief description of what the command does.
 
-* Example 01 modifies adds user login to the application without database support
+* Example 01 modifies the Chapter 9 examples and adds user login to the application without database support
