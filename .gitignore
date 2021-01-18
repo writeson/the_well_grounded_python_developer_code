@@ -154,8 +154,5 @@ dmypy.json
 *.code-workspace
 .venv
 
-# Keep environment files out of GitHub
-.env
-
 # keep secrets out of GitHub
 .secrets.*

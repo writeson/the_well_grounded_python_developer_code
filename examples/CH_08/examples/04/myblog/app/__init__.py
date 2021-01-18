@@ -1,14 +1,14 @@
 import os
+import yaml
+from pathlib import Path
 from flask import Flask
 from dynaconf import FlaskDynaconf
-from logging.config import dictConfig
+import logging
+import logging.config
 
 
-def create_app(environment="production"):
+def create_app():
     """Initialize the Flask app instance"""
-
-    # configure logging prior to creating the app instance
-    dictConfig(_logging_configuration(environment))
 
     app = Flask(__name__)
     dynaconf = FlaskDynaconf(extensions_list=True)
@@ -19,6 +19,11 @@ def create_app(environment="production"):
         os.environ["ROOT_PATH_FOR_DYNACONF"] = app.root_path
         dynaconf.init_app(app)
 
+        # turn the secret key into a bytearray
+        app.config["SECRET_KEY"] = bytearray(app.config["SECRET_KEY"], "UTF-8")
+
+        _configure_logging(app, dynaconf)
+
         # import the routes
         from . import intro
 
@@ -28,32 +33,16 @@ def create_app(environment="production"):
         return app
 
 
-def _logging_configuration(environment):
-    logging_level = "DEBUG" if environment == "development" else "INFO"
-    return {
-        "version": 1,
-        "disable_existing_loggers": True,
-        "formatters": {
-            "default": {
-                "format": "[%(asctime)s] %(levelname)s in %(module)s: %(message)s",
-            },
-            "access": {
-                "format": "%(message)s",
-            }
-        },
-        "handlers": {
-            "console": {
-                "level": logging_level,
-                "class": "logging.StreamHandler",
-                "formatter": "default",
-                "stream": "ext://sys.stdout",
-            }
-        },
-        "loggers": {
-            "": {
-                "handlers": ["console"],
-                "level": logging_level,
-                "propagate": False
-            }
-        }
-    }
+def _configure_logging(app, dynaconf):
+    # configure logging
+    logging_config_path = Path(app.root_path).parent / "logging_config.yaml"
+    with open(logging_config_path, "r") as fh:
+        logging_config = yaml.safe_load(fh.read())
+        logging_config["handlers"]["console"]["level"] = logging_config.get(
+            dynaconf.settings["ENV"], {}).get("level", "INFO"
+        )
+        logging_config["loggers"][""]["level"] = logging_config.get(
+            dynaconf.settings["ENV"], {}).get("level", "INFO"
+        )
+        logging.config.dictConfig(logging_config)
+

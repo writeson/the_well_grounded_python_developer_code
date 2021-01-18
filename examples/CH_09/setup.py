@@ -14,8 +14,9 @@ setup(
     python_requires=">=3.8.0",
     install_requires=[
         "flask==1.1.2",
-        "python-dotenv==0.15.0",
         "flask-debugtoolbar==0.11.0",
+        "dynaconf==3.1.2",
+        "PyYAML==5.3.1",
         "gunicorn==20.0.4",
         "waitress==1.4.4"
     ],

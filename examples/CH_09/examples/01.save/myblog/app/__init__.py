@@ -9,7 +9,6 @@ def create_app(environment="production"):
     # configure logging prior to creating the app instance
     dictConfig(_logging_configuration(environment))
 
-    # create the flask app instance
     app = Flask(__name__)
     app.config.from_object(f"config.Config{environment.title()}")
 
@@ -18,7 +17,6 @@ def create_app(environment="production"):
         toolbar = DebugToolbarExtension()
         toolbar.init_app(app)
 
-    # with the app instance context register the blueprints
     with app.app_context():
 
         # create a route to the favicon.ico file

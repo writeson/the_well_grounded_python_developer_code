@@ -6,6 +6,7 @@ from . import intro_bp
 
 logger = getLogger(__file__)
 
+
 class PageVisit:
     COUNT = 0
 
